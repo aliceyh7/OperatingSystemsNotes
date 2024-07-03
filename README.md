@@ -89,3 +89,70 @@ Program Counter: the instruction number/line of the program to continue from whe
 Preemption: forcefully stopping the execution of a process by CPU
 
 TImestamp: the max amount of time a process can be executed without preemption
+
+# Types of Scheduler, Context Switching
+Long-term Scheduler: determines what processes & how many to move from HD to RAM
+Short-term Scheduler: determines what processes to move from RAM to CPU
+
+High priority processes should be executed first
+
+Whenever a process needs to be moved from HD to RAM and RAM is full, which process should be moved to HD to allocate more space is decided by Medium Scheduler
+
+# Various Times of a Process
+Terms: Arrival Time, Burst Time, Completion Time， waiting time, response time, i/o time
+Turn Around Time: completion time - arrival time
+Turn Around Time: burst time + i/o time + waiting time
+I/O time: the amount of time on I/O after it has arrived into the RAM
+
+
+# Types of Scheduling Algorithms
+CPU Scheduling Algorithms: preemptive, non-preemptive
+Non-preemptive: never preempt a process if it has already started
+Preemptive: if a higher priority process appears, leave the current process and schedule higher priority
+
+CPU Scheduling Algorithms can be applied only to processes which are in the "ready state" (not running or I/O)
+- processes in I/O are blocked so that they will not be considered by scheduling algorithms while scheduling
+
+SJF Scheduling Algorithm: among the arrived processes, process with the least burst time (execution time) will be given preference
+-Non-preemptive scheduling algorithm
+-Priority-based algorithm
+-Throughput: number of processes/schedule length
+
+SRTF: Shortest remaining time first scheduling algorithm (preemptive version of SJF)
+
+Response time: the initial waiting time before getting the CPU for the first time
+-non-preemptive: response time = waiting time
+-preemptive: 
+
+FCFS: the process which has the least arrival time will be scheduled first
+- non-preemptive scheduling algorithm
+- not a priority-based scheduling algorithm
+
+FCFS with context-switching overhead
+-context-switching: x time unit
+
+# Starvation
+Starvation problem: iff there is a chance for a process in the ready state to wait indefinitely to get the CPU
+
+Any priority based scheduling algorithm will definitely suffer from the problem of starvation
+
+Any FIFO structure for RAM is starvation free
+
+# Convoy Effect
+A smaller process (process with very small execution time) waiting for one big process to get off (release) the CPU
+
+An algorithm with convoy effect problem can lead to higher waiting time and higher TAT in comparison to an algorithm without convoy effect problem
+
+FCFS has high convoy effect: short processes have to wait for long processes at the front of the queue 
+
+
+# Practical Implementation
+SJF, SRTF: better throughput (produce processing much faster than FCFS)
+FCFS: easier to implement (just add clock)
+
+# Throughput:
+number of processes executed per unit time
+Equation: = (# of processes executed) / schedule length
+
+SRTF has highest throughput -- CPU never idle
+
