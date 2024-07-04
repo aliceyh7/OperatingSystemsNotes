@@ -88,7 +88,7 @@ Program Counter: the instruction number/line of the program to continue from whe
 
 Preemption: forcefully stopping the execution of a process by CPU
 
-TImestamp: the max amount of time a process can be executed without preemption
+Timestamp: the max amount of time a process can be executed without preemption
 
 # Types of Scheduler, Context Switching
 Long-term Scheduler: determines what processes & how many to move from HD to RAM
@@ -156,3 +156,74 @@ Equation: = (# of processes executed) / schedule length
 
 SRTF has highest throughput -- CPU never idle
 
+
+# Longest Job Scheduling Algorithm
+Among all arrived processes, process with longest burst time will be scheduled first
+-if tie, choose the process with same arrival time;; process with least process number
+-Non-preemptive, priority based scheduling algorithm
+
+Disadvantage: 
+1. starvation problem exists
+2. convoy effect problem exists
+3. throughput is small
+4. practically very difficult to implement
+
+# Round Robin Scheduling Algorithm (very popular today)
+Time Quantum: maximum allowable time a process can run without getting preempted
+
+Round-robin scheduling algorithm: time quantum + FCFS
+1. works on the basis of a particular time quantum
+2. uses Queue data structure 
+3. very popular and used in the most of the OS today
+
+Advantages: no starvation, no convoy-effect, implementable 
+Disadvantages: throughput is good but not as good as SJF, SRTF
+
+# Non-Preemptive Priority-Based Scheduling Algorithm
+
+
+# Preemptive Priority-Based Scheduling Algorithm
+
+# Priority based scheduling with processes requiring CPU and 1O time
+
+# Highest Response Ratio Next Scheduling Algorithm
+- Non-preemptive
+- Favors short processes but also limits waiting time of long process
+- w: waiting time for a process so far
+- b: burst time 
+- Response ratio: ((w + b)/ b)
+
+Steps:
+1. Calculate response ratio
+2. Select process with highest response ratio for execution
+3. Execute process: run the selected process to completion
+4. Repeat
+
+Advantages: reduces waiting time, prevents starvation
+Disadvantages: requires calculating response ratio for each process, not suitable for real-time systems (immediate response is critical)
+
+# Suspension
+Suspend Ready State: The process is ready to execute but swapped out of main memory (HD).
+Suspend I/O State: The process is waiting for I/O completion and is swapped out of main memory (HD).
+
+A process can move from the ready state to the suspend ready state if the system decides to swap it out to free up memory.
+A process can move from the blocked state to the suspend I/O state if the system decides to swap it out while it is waiting for an I/O operation.
+
+Memory Management, Improve System Performance, Multiprogramming
+
+
+# Dispatcher
+Crucial part of process management of OS
+- manages transition of processes between different states, from the ready state to the running state
+
+1. Process arrives, placed in ready queue
+2. Scheduler selects a process from ready queue
+3. Dispatcher performs a context switch, saving state of currently running process, loading state of the selected process
+4. Process execution: selected process is given control of the CPU, begins execution
+5. process completion/preemption
+
+# Basics of Binary Number System
+With n bits we can form 2^n numbers
+we can divide a set of 2^n numbers into 2 groups by choosing 1 bit.
+1. group whose first bit is 0 and
+2. group whose first bit is 1.
