@@ -227,3 +227,70 @@ With n bits we can form 2^n numbers
 we can divide a set of 2^n numbers into 2 groups by choosing 1 bit.
 1. group whose first bit is 0 and
 2. group whose first bit is 1.
+
+# Memory Management 
+Two things stored in each word of memory (RAM): instruction and data
+- binary format
+- 2^m words = m-bits
+
+RAM is a collection of words (addresses) == physical address space
+
+1. CPU asks for a word by providing an index address to RAM
+2. Word is copied from RAM and moved to register
+3. CPU can read from register and execute
+
+# Contiguous vs Non-Contiguous Allocation
+Methods used to read the processes to main memory
+Ways of placing processes inside the RAM
+
+1. Contiguous Allocation
+- Fixed partitioning (static partitioning)
+- Variable partitioning (dynamic partitioning)
+- (Good for system logs, audio/video streaming, sequential access, file size doesn't change)
+
+2. Non-contiguous Allocation
+- Address space
+- (Process is split up when placed in RAM)
+- Good for fragmented storage, dynamic file sizes
+
+Comparison: 
+Contiguous: files stored in consecutive blocks, fast and simple access, prone to fragmentation, difficult to grow files
+Non-contiguous: flexible and avoids fragmentation, complex management, slower access due to scattered blocks
+
+# Fixed Partitioning - Contiguous Allocation
+RAM is partitioned first before placing any processes
+1. Internal fragmentation Problem exists -- size of process < size of partition, so some space is wasted
+2. Process size is limited by size of largest partition
+3. Degree of multiprogramming isl imited by number of partitions
+Note: no external fragmentation problem in fixed partitioning
+
+
+# Variable Partitioning - Contiguous Allocation
+1. No internal fragmentation problem
+2. Degree of Multiprogramming is not limited
+3. Size of a process is not limited by size of largest position, rather it is limited by size of RAM
+Suffers from external problem
+
+# Memory Allocation Algorithms
+First fit
+Next fit
+Best fit
+Worst fit
+
+# Paging and Segmentation
+
+Partitioning: Fixed (equal sized, unequal sized) or Dynamic Partitioning
+
+Each page of a process is loaded into any available memory frame.
+
+
+Compaction: fix fragmentation by move the holes together and the processes together
+Paging: The operating system keeps a page table to map logical pages to physical frames.
+- Eliminates the problem of finding large contiguous memory spaces.
+- Helps in efficient use of memory and reduces fragmentation.
+
+Segmentation: divides memory into variable-sized segments based on logical divisions of a program
+- Each segment represents a logical unit such as a function, array, or data structure.
+- The operating system maintains a segment table that maps segments to physical memory addresses.
+
+
